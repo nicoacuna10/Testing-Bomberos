@@ -29,95 +29,72 @@ Node * createNode(const void * data) {
 }
 
 List * createList() {
-    List *lista = (List *) malloc(sizeof(List) );
-    if(lista == NULL){
-        printf("No hay suficiente espacio en la memoria\n"); exit(1);
-    }
-    lista->head = NULL;
-    lista->tail = NULL;
-    lista->current = NULL;
-
-     return lista;
+     List * new = (List *)malloc(sizeof(List));
+     assert(new != NULL);
+     new->head = new->tail = new->current = NULL;
+     return new;
 }
 
 void * firstList(List * list) {
-    list->current = list->head; 
-    return (void *)list->head->data;
+    if (list == NULL || list->head == NULL) return NULL;
+    list->current = list->head;
+    return (void *)list->current->data;
 }
 
 void * nextList(List * list) {
-    if( (list->current) && (list->current->next != NULL) )
-        list->current = list->current->next;
-    else
-        return NULL;
-
+    if (list == NULL || list->head == NULL || list->current == NULL || list->current->next == NULL) return NULL;
+    list->current = list->current->next;
     return (void *)list->current->data;
 }
 
 void * lastList(List * list) {
-    list->current = list->tail; 
-    return (void *)list->tail->data;
+    if (list == NULL || list->head == NULL) return NULL;
+    list->current = list->tail;
+    return (void *)list->current->data;
 }
 
 void * prevList(List * list) {
-    if( (list->current) && (list->current->prev != NULL) )
-        list->current = list->current->prev; 
-    else
-        return NULL;
-
-    return (void *) list->current->data;
+    if (list == NULL || list->head == NULL || list->current == NULL || list->current->prev == NULL) return NULL;
+    list->current = list->current->prev;
+    return (void *)list->current->data;
 }
 
 void pushFront(List * list, const void * data) {
-    Node *nuevoNodo = createNode( (void *) data); 
-    
-    if(nuevoNodo == NULL){
-        printf("No hay suficiente espacio en la memoria\n"); exit(1);
-    }
-    // Si no hay nodos en la lista se actualizan datos de list//
-    if(list->head == NULL){
-        list->head = nuevoNodo;
-        list->tail = nuevoNodo;
-        return;
+    assert(list != NULL);
+
+    Node * new = createNode(data);
+
+    if (list->head == NULL) {
+        list->tail = new;
+    } else {
+        new->next = list->head;
+        list->head->prev = new;
     }
 
-    // Si ya hay elemtos en la lista se ejecutan las siguientes instrucciones //
-    list->head->prev = nuevoNodo;
-    nuevoNodo->next = list->head;
-    list->head = nuevoNodo;
-
-    return;
+    list->head = new;
 }
 
 void pushBack(List * list, const void * data) {
     list->current = list->tail;
-    pushCurrent(list,data);
+    if(list->current==NULL) pushFront(list,data);
+    else pushCurrent(list,data);
 }
 
 void pushCurrent(List * list, const void * data) {
-    Node *nodoNuevo = createNode( (void *) data);
-    if(nodoNuevo == NULL){
-        printf("No hay suficiente espacio en la memoria\n"); exit(1);
-    }
-    nodoNuevo->prev = list->current;
+    assert(list != NULL && list->current !=NULL);
+    Node * new = createNode(data);
 
-    //Cuando current es cola de la lista//
-    if(list->current->next == NULL){
-        list->current->next = nodoNuevo;
-        nodoNuevo->prev = list->current;
-        list->current = nodoNuevo;
-        list->tail = list->current;
+    if(list->current->next)
+        new->next = list->current->next;
+    new->prev = list->current;
 
-    //Cuando current está entre medio// 
-    }else{
-        list->current->next = nodoNuevo;
-        nodoNuevo->next = list->current->next->next; //Lineanueva;
-        nodoNuevo->prev = list->current;
-        list->current = nodoNuevo;
-    }
+    if(list->current->next)
+        list->current->next->prev = new;
+    list->current->next = new;
 
+    if(list->current==list->tail)
+        list->tail=new;
 
-    return;
 }
 
 void * popFront(List * list) {
@@ -131,53 +108,41 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    Node *nodoABorrar = (Node *)  malloc(sizeof(Node) );
-    long int *numero = NULL;
+    assert(list != NULL || list->head != NULL);
 
-    if(nodoABorrar == NULL){
-        printf("No hay suficiente espacio en la memoria\n"); exit(1);;
-    }
+    if (list->current == NULL) return NULL;
 
-    nodoABorrar = list->current;
+    Node * aux = list->current;
 
-    //Caso head//
-    if(nodoABorrar->prev == NULL){
-        list->head = list->current->next;
-        list->head->prev = NULL;
-        list->current = list->head;
-        nodoABorrar->next = NULL;
-        nodoABorrar->prev = NULL;
-        numero = (long int *) nodoABorrar->data;
-        free(nodoABorrar); 
-        return (void *) numero;
+    if (aux->next != NULL)
+        aux->next->prev = aux->prev;
 
-    //Caso cola //
-    }else if(nodoABorrar->next == NULL){
+
+    if (aux->prev != NULL)
+        aux->prev->next = aux->next;
+
+
+    void * data = (void *)aux->data;
+
+    if(list->current == list->tail)
         list->tail = list->current->prev;
-        list->current = list->tail;
-        list->tail->next = NULL;
-        nodoABorrar->prev = NULL;
-        nodoABorrar->next = NULL;
-        numero = (long int *) nodoABorrar->data;
-        free(nodoABorrar);
-        return (void *) numero; 
 
-    //Caso cuando nodo está al medio//
-    }else{
-        list->current->next->prev = list->current->prev;
-        list->current->prev->next = list->current->next;
-        nodoABorrar->prev = NULL;
-        nodoABorrar->next = NULL;
-        numero = (long int *) nodoABorrar->data;
-        free(nodoABorrar);
-        return (void *) numero;
-    }
+    if(list->current == list->head)
+        list->head = list->current->next;
 
-    
-    return NULL;
+    list->current = aux->prev;
+
+
+
+
+    free(aux);
+
+    return data;
 }
 
 void cleanList(List * list) {
+    assert(list != NULL);
+
     while (list->head != NULL) {
         popFront(list);
     }
