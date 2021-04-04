@@ -42,11 +42,6 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     int j;
     Bombero *aux;
 
-    /*
-    for( j = 0; dia[j]; j++){
-        dia[j] = toupper(dia[j]);
-    }
-    */
 
     printf("RUT                    NOMBRE\n");
 
