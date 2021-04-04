@@ -10,85 +10,45 @@ typedef struct{
 
 void menu(int *opcion);
 List *importarBomberosDesdeUnArchivo(char *, unsigned long long *talla);
-void copiarCadena(Bombero *b, Bombero *vector, unsigned long long j);
-Bombero *agregarBombero(char rut[10], char *nombre, int disponibilidad[] );
-void eliminarBomberos(char *rut, Bombero *vector, unsigned long long *talla);
-//void buscarBomberosDisponiblesPorDia(char *dia){
-//void buscarBomberosPorRut(char *rut){
-//void modificarDisponibilidadDeUnBombero(char *rut, int disponibilidad[] ){
-//void crearHorarioSemanal(void){
-//void mostrarHorarioDeLaSemana(void ){
-void mostrarTodosLosBomberosDeLaEstacion(Bombero *vector, unsigned long long talla);
+void agregarBombero(char *rut, char *nombre, int *disponibilidad, List *listaBomberos);
+void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla);
+void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos);
+void buscarBomberosPorRut(char *rut, List *listaBomberos);
+void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *listaBomberos);
+void crearHorarioSemanal();
+void mostrarHorarioDeLaSemana();
+void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos);
 
 
 int main(void){
-    int opcion = 0, i = 0;
+    int opcion = 0;
     unsigned long long talla;
-    List *list = createList();
-    Bombero *vector = NULL;
-    char rut[10];
+    List *listaBomberos = createList();
+    char rut[10], nombre[100], dia[9];
+    int disponibilidad[7];
 
 
 
-    list = importarBomberosDesdeUnArchivo("bomberos.csv", &talla);
+    listaBomberos = importarBomberosDesdeUnArchivo("bomberos.csv", &talla);
 
     do{
         menu(&opcion);
         getchar();
         if(opcion == 0) break;
-        //if(opcion == 1) agregarBombero();
-        if(opcion == 2) eliminarBomberos(rut,vector, &talla); 
-        //if(opcion == 3) buscarBomberosDisponiblePorDia();  
-        //if(opcion == 4) buscarBomberosPorRut(); 
-        //if(opcion == 5) modificarDisponibilidadDeUnBombero(); 
-        //if(opcion == 6) crearHorarioSemanal();
-        //if(opcion == 7) mostrarHorarioDelaSemana(); 
-        if(opcion == 8) mostrarTodosLosBomberosDeLaEstacion(vector, talla);
+        if(opcion == 1){ agregarBombero(rut,nombre,disponibilidad,listaBomberos); talla++;}
+        if(opcion == 2) eliminarBomberos(rut,listaBomberos, &talla);
+        if(opcion == 3) buscarBomberosDisponiblesPorDia(dia,listaBomberos);
+        if(opcion == 4) buscarBomberosPorRut(rut,listaBomberos);
+        if(opcion == 5) modificarDisponibilidadDeUnBombero(rut,disponibilidad,listaBomberos);
+        if(opcion == 6) crearHorarioSemanal();
+        if(opcion == 7) mostrarHorarioDeLaSemana();
+        if(opcion == 8) mostrarTodosLosBomberosDeLaEstacion(listaBomberos);
 
         printf("\n\n");
     }while(opcion != 0);
 
 
     printf("TOTAL BOMBEROS: %llu\n", talla);
-
-
-    //Bombero *b = (Bombero*)malloc(sizeof(Bombero));
-   
-    //importarBomberosDesdeUnArchivo("info_Bomberos.txt");
-
-
-
-
-
-
-/*
-    switch(opcion){
-      case 1: scanf("%s %s", b->rut, b->nombre);
-              for(i = 0; i < 7; i++){
-                scanf("%d", &b->disponibilidad[i]);
-              }
-              agregarBombero(b->rut,b->nombre,b->disponibilidad);
-      break;
-      case 2: eliminarBomberos();
-      break;
-      case 3: buscarBomberosDisponiblesPorDia();
-      break;
-      case 4: buscarBomberosPorRut();
-      break;
-      case 5: modificarDisponibilidadDeUnBombero();
-      break;
-      case 6: crearHorarioSemanal();
-      break;
-      case 7: mostrarHorarioDeLaSemana();
-      break;
-      case 8: mostrarTodosLosBomberosDeLaEstacion();
-      break;
-      case 0:
-      break;
-    }
-
- */   
-
 
     return 0;
 }
