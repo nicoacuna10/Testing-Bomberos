@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "list.h"
 
 typedef struct{
@@ -9,17 +10,43 @@ typedef struct{
   int disponibilidad[7];
 }Bombero;
 
+void corroborarValidezDeDia(char *dia){
+    /*Esta función sirve para saber que se ingreso días de lunes a viernes
+      y no un día con nombre no válido. Ej: bvbwgsf o 1234.             */ 
+    repetirFuncion: 
+    for(int j = 0; dia[j]; j++){
+        dia[j] = toupper(dia[j]);
+    }
+
+    if(!strcmp(dia,"LUNES") )     return;
+    if(!strcmp(dia,"MARTES") )    return;
+    if(!strcmp(dia,"MIERCOLES") ) return;
+    if(!strcmp(dia,"JUEVES") )    return;
+    if(!strcmp(dia,"VIERNES") )   return;
+    if(!strcmp(dia,"SABADO") )    return;
+    if(!strcmp(dia, "DOMINGO") )  return;
+
+    printf("¡Ha escrito algo que no es un día de la semana!\n\n Por favor ingrese día de la semana: ");
+    scanf("%s", dia);
+    getchar();
+    goto repetirFuncion;
+}
+
+
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     printf("Ingrese dia para buscar bomberos disponibles: ");
     scanf("%[^\n]s", dia);
     getchar();
-
+    printf("\n"); //Enter para que se vea mejor estéticamente//
+    corroborarValidezDeDia(dia);
     int j;
     Bombero *aux;
 
+    /*
     for( j = 0; dia[j]; j++){
         dia[j] = toupper(dia[j]);
     }
+    */
 
     printf("RUT                    NOMBRE\n");
 

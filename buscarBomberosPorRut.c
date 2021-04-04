@@ -28,8 +28,14 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
             }
         }
         if(encontrado){
-            printf("RUT               NOMBRE\n");
-            printf("%s          %s\n", aux->rut, aux->nombre);
+            printf("RUT               NOMBRE                         DISPONIBILIDAD\n");
+            printf("%s         %s                         ", aux->rut, aux->nombre);
+            //Se imprimen los días y su respectiva disponibilidad//
+            int j;
+            printf("[");
+            for(j = 0; j < 7; j++) printf("%d ", aux->disponibilidad[j]);
+
+            printf("]\n");
             return;
         }
         aux = nextList(listaBomberos);

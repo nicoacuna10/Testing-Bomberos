@@ -11,7 +11,8 @@ void menu(int *opcion){
     printf("6. Crear horario de la semana\n");
     printf("7. Mostrar horario de la semana\n");
     printf("8. Mostrar todods los Bomberos\n");
-    printf("0. Salir\n");
+    printf("0. Salir\n\n");
+    printf("Por favor ingrese un opción de 0 al 9: ");
     scanf("%d", opcion);
 
     if( (*opcion < 0) || (*opcion > 8) ){
