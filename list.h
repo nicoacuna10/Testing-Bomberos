@@ -3,12 +3,6 @@
 #ifndef List_h
 #define List_h
 
-typedef struct{
-    char* rut;
-    char* nombre;
-    int disponibilidad[7];
-}Bombero;
-
 typedef struct List List;
 
 List * createList(void);
@@ -21,19 +15,17 @@ void * lastList(List * list);
 
 void * prevList(List * list);
 
-void pushFront(List * list, Bombero * data);
+void pushFront(List * list, const void * data);
 
-void pushBack(List * list, Bombero * data);
+void pushBack(List * list, const void * data);
 
-void pushCurrent(List * list, Bombero * data);
+void pushCurrent(List * list, const void * data);
 
 void * popFront(List * list);
 
 void * popBack(List * list);
 
 void * popCurrent(List * list);
-
-bool existeRutBombero(List * list, char* r)
 
 void cleanList(List * list);
 
