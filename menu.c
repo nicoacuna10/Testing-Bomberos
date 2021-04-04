@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void menu(int *opcion){
-    repetirFuncion:
+    do{
     printf("Estacion de bomberos\n");
     printf("1. Agregar Bombero\n");
     printf("2. Despedir Bombero\n");
@@ -12,13 +12,11 @@ void menu(int *opcion){
     printf("7. Mostrar horario de la semana\n");
     printf("8. Mostrar todods los Bomberos\n");
     printf("0. Salir\n\n");
-    printf("Por favor ingrese un opción de 0 al 9: ");
+    printf("Por favor ingrese un opción de 0 al 8: ");
     scanf("%d", opcion);
+    while( (getchar() ) != '\n');
 
-    if( (*opcion < 0) || (*opcion > 8) ){
-        printf("Por favor inserte opción VALIDA!!\n\n");
-        goto repetirFuncion;
-    }
+    }while( (*opcion < 0) || (*opcion > 8) );
 
     return;
 }

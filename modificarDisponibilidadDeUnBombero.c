@@ -15,7 +15,7 @@ void validarDato(char *d){
         printf("Solo puede ser S mayúscula o N Mayúscula\n\n");
         printf("Por favor ingrese su opción: ");
         scanf("%c", d);
-        getchar();
+        while( ( getchar() ) != '\n');
     }while( (*d != 'S') && (*d != 'N') );
     return;
 }
