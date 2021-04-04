@@ -9,11 +9,23 @@ typedef struct{
     int disponibilidad[7];
 }bombero;
 
-void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *listaBomberos){
+void validarDato(char *d){
+    do{
+        printf("Por favor Ingrese elementos VALIDOS\n");
+        printf("Solo puede ser S mayúscula o N Mayúscula\n\n");
+        printf("Por favor ingrese su opción: ");
+        scanf("%c", d);
+        getchar();
+    }while( (*d != 'S') && (*d != 'N') );
+    return;
+}
 
+void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *listaBomberos){
+        //Hay que ver si sacamos rut de variable de entrada de la función//
 
         printf("Ingrese rut: ");
-        gets(rut);
+        scanf("%s", rut);
+        getchar();
 
         int i;
         bool encontrado;
@@ -29,50 +41,63 @@ void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *li
                 }
             }
             if(encontrado){
-                char *d = malloc(2 * sizeof(char));
+                char d; 
 
                 printf("\nEscriba SI o NO segun disponibilidad");
 
                 printf("\nLunes: ");
-                scanf("%s", d);
-                if(d[0] == 'S'){
+                scanf("%c", &d);
+                getchar();
+                if( (d != 'S') && (d != 'N') ) validarDato(&d);
+                if(d == 'S'){
                 disponibilidad[0] = 1;
                 }else disponibilidad[0] = 0;
 
                 printf("\nMartes: ");
-                scanf("%s", d);
-                if(d[0] == 'S'){
+                scanf("%c", &d);
+                getchar();
+                if( (d != 'S') && (d != 'N') ) validarDato(&d);
+                if(d == 'S'){
                 disponibilidad[1] = 1;
                 }else disponibilidad[1] = 0;
 
                 printf("\nMiercoles: ");
-                scanf("%s", d);
-                if(d[0] == 'S'){
+                scanf("%c", &d);
+                getchar();
+                if( (d != 'S') && (d != 'N') ) validarDato(&d);
+                if(d == 'S'){
                     disponibilidad[2] = 1;
                 }else disponibilidad[2] = 0;
 
                 printf("\nJueves: ");
-                scanf("%s", d);
-                if(d[0] == 'S'){
+                scanf("%c", &d);
+                getchar();
+                if( (d != 'S') && (d != 'N') ) validarDato(&d);
+                if(d == 'S'){
                     disponibilidad[3] = 1;
                 }else disponibilidad[3] = 0;
 
                 printf("\nViernes: ");
-                scanf("%s", d);
-                if(d[0] == 'S'){
+                scanf("%c", &d);
+                getchar();
+                if( (d != 'S') && (d != 'N') ) validarDato(&d);
+                if(d == 'S'){
                     disponibilidad[4] = 1;
                 }else disponibilidad[4] = 0;
 
                 printf("\nSabado: ");
-                scanf("%s", d);
-                if(d[0] == 'S'){
+                scanf("%c", &d);
+                getchar();
+                if( (d != 'S') && (d != 'N') ) validarDato(&d);
+                if(d == 'S'){
                     disponibilidad[5] = 1;
                 }else disponibilidad[5] = 0;
 
                 printf("\nDomingo: ");
-                scanf("%s", d);
+                scanf("%c", &d);
                 getchar();
-                if(d[0] == 'S'){
+                if( (d != 'S') && (d != 'N') ) validarDato(&d);
+                if(d == 'S'){
                     disponibilidad[6] = 1;
                 }else disponibilidad[6] = 0;
 
