@@ -15,9 +15,10 @@ void menu(int *opcion){
     scanf("%d", opcion);
 
     if( (*opcion < 0) || (*opcion > 8) ){
-        printf("Por favor inserte opción VALIDA!!\n\n");
+        printf("Por favor inserte opciÃ³n VALIDA!!\n\n");
         goto repetirFuncion;
     }
 
     return;
 }
+
