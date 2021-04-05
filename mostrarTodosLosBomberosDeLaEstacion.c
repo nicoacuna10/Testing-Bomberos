@@ -9,11 +9,18 @@ typedef struct{
 }Bombero;
 
 void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos){
-    int i;
+    int i, espacios;
     Bombero* aux = firstList(listaBomberos);
-    printf("RUT          NOMBRE                    DISPONIBILIDAD\n");
+    printf("RUT            NOMBRE                        DISPONIBILIDAD\n");
     while(aux!=NULL){
-    printf("%s          %s                    [", aux->rut, aux->nombre);
+        espacios = 10 - strlen(aux->rut);
+        if(espacios == 1){ printf(" "); }
+        printf("%s     %s", aux->rut, aux->nombre);
+        espacios = 30 - strlen(aux->nombre);
+        for( i = 0; i < espacios; i++){
+            printf(" ");
+        }
+        printf("[");
         for( i = 0; i < 7; i++){
             printf("%d ", aux->disponibilidad[i]);
         }
