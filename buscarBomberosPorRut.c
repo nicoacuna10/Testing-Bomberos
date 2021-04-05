@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 #include "list.h"
 
@@ -14,7 +15,7 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
     scanf("%[^\n]s", rut);
     getchar();
 
-    int i;
+    int i, espacios;
     bool encontrado;
     bombero *aux = firstList(listaBomberos);
 
@@ -28,8 +29,14 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
             }
         }
         if(encontrado){
-            printf("RUT               NOMBRE                         DISPONIBILIDAD\n");
-            printf("%s         %s                         ", aux->rut, aux->nombre);
+            printf("RUT            NOMBRE                        DISPONIBILIDAD\n");
+            espacios = 10 - strlen(aux->rut);
+            if(espacios == 1){ printf(" "); }
+            printf("%s     %s", aux->rut, aux->nombre);
+            espacios = 30 - strlen(aux->nombre);
+            for( i = 0; i < espacios; i++){
+                printf(" ");
+            }
             //Se imprimen los días y su respectiva disponibilidad//
             int j;
             printf("[");
