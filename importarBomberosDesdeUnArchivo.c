@@ -49,8 +49,14 @@ char *get_csv_field (char * tmp, int k){
     return NULL;
 }
 
-List *importarBomberosDesdeUnArchivo(char *bomberos, unsigned long long *talla){
-    FILE *fp = fopen("bomberos.csv","r");
+List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *talla){
+    printf("Ingrese nombre del archivo .csv: ");
+    scanf("%s", nombreArchivo);
+    FILE *fp = fopen(nombreArchivo,"r");
+    if(fp == NULL){
+      printf("\nARCHIVO NO ENCONTRADO\n");
+      exit(1);
+    }
     char linea[1000];
     char *aux;
     Bombero *b;
