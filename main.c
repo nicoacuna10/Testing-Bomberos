@@ -36,7 +36,6 @@ int main(void){
 
     do{
         menu(&opcion);
-        getchar();
         if(opcion == 0) break;
         if(opcion == 1){ agregarBombero(rut,nombre,disponibilidad,listaBomberos); talla++;}
         if(opcion == 2) eliminarBomberos(rut,listaBomberos, &talla);

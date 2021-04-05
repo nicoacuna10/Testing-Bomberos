@@ -51,7 +51,8 @@ char *get_csv_field (char * tmp, int k){
 
 List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *talla){
     printf("Ingrese nombre del archivo .csv: ");
-    scanf("%s", nombreArchivo);
+    scanf("%[^\n]s", nombreArchivo);
+    getchar();
     FILE *fp = fopen(nombreArchivo,"r");
     if(fp == NULL){
       printf("\nARCHIVO NO ENCONTRADO\n");
