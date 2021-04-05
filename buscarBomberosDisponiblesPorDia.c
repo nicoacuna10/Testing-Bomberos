@@ -39,18 +39,20 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     getchar();
     printf("\n"); //Enter para que se vea mejor estéticamente//
     corroborarValidezDeDia(dia);
-    int j;
+    int j, espacios;
     Bombero *aux;
 
 
-    printf("RUT                    NOMBRE\n");
+    printf("RUT            NOMBRE\n");
 
     aux = firstList(listaBomberos);
 
     if(dia[0] == 'L'){
         while(aux!=NULL){
             if(aux->disponibilidad[0] == 1){
-                printf("%s               %s\n", aux->rut, aux->nombre);
+                espacios = 10 - strlen(aux->rut);
+                if(espacios == 1){ printf(" "); } 
+                printf("%s     %s\n", aux->rut, aux->nombre);
             }
             aux = nextList(listaBomberos);
         }
@@ -59,7 +61,9 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     if(dia[0] == 'M' && dia[1] == 'A'){
         while(aux!=NULL){
             if(aux->disponibilidad[1] == 1){
-                printf("%s          %s\n", aux->rut, aux->nombre);
+                espacios = 10 - strlen(aux->rut);
+                if(espacios == 1){ printf(" "); }
+                printf("%s     %s\n", aux->rut, aux->nombre);
             }
             aux = nextList(listaBomberos);
         }
@@ -68,7 +72,9 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     if(dia[0] == 'M' && dia[1] == 'I'){
         while(aux!=NULL){
             if(aux->disponibilidad[2] == 1){
-                printf("%s          %s\n", aux->rut, aux->nombre);
+                espacios = 10 - strlen(aux->rut);
+                if(espacios == 1){ printf(" "); }
+                printf("%s     %s\n", aux->rut, aux->nombre);
             }
             aux = nextList(listaBomberos);
         }
@@ -77,7 +83,9 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     if(dia[0] == 'J'){
         while(aux!=NULL){
             if(aux->disponibilidad[3] == 1){
-                printf("%s          %s\n", aux->rut, aux->nombre);
+                espacios = 10 - strlen(aux->rut);
+                if(espacios == 1){ printf(" "); }
+                printf("%s     %s\n", aux->rut, aux->nombre);
             }
             aux = nextList(listaBomberos);
         }
@@ -86,7 +94,9 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     if(dia[0] == 'V'){
         while(aux!=NULL){
             if(aux->disponibilidad[4] == 1){
-                printf("%s          %s\n", aux->rut, aux->nombre);
+                espacios = 10 - strlen(aux->rut);
+                if(espacios == 1){ printf(" "); }
+                printf("%s     %s\n", aux->rut, aux->nombre);
             }
             aux = nextList(listaBomberos);
         }
@@ -95,7 +105,9 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     if(dia[0] == 'S'){
         while(aux!=NULL){
             if(aux->disponibilidad[5] == 1){
-                printf("%s          %s\n", aux->rut, aux->nombre);
+                espacios = 10 - strlen(aux->rut);
+                if(espacios == 1){ printf(" "); }
+                printf("%s     %s\n", aux->rut, aux->nombre);
             }
             aux = nextList(listaBomberos);
         }
@@ -104,7 +116,9 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     if(dia[0] == 'D'){
         while(aux!=NULL){
             if(aux->disponibilidad[6] == 1){
-                printf("%s          %s\n", aux->rut, aux->nombre);
+                espacios = 10 - strlen(aux->rut);
+                if(espacios == 1){ printf(" "); }
+                printf("%s     %s\n", aux->rut, aux->nombre);
             }
             aux = nextList(listaBomberos);
         }
