@@ -10,7 +10,7 @@ typedef struct{
 }Bombero;
 
 void menu(int *opcion);
-List *importarBomberosDesdeUnArchivo(char *, unsigned long long *talla);
+List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *talla);
 void agregarBombero(char *rut, char *nombre, int *disponibilidad, List *listaBomberos);
 void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla);
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos);
@@ -25,13 +25,14 @@ int main(void){
     int opcion = 0;
     unsigned long long talla;
     List *listaBomberos = createList();
+    char nombreArchivo[100];
     char rut[11], nombre[101], dia[9];
     int disponibilidad[7];
     memset(rut, '\0', 11);
     memset(nombre, '\0', 101);
 
 
-    listaBomberos = importarBomberosDesdeUnArchivo("bomberos.csv", &talla);
+    listaBomberos = importarBomberosDesdeUnArchivo(nombreArchivo, &talla);
 
     do{
         menu(&opcion);
@@ -54,3 +55,4 @@ int main(void){
     printf("¡Adios! ¡Que tenga buen día !\n\n");
     return 0;
 }
+
