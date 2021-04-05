@@ -45,13 +45,12 @@ int main(void){
         if(opcion == 6) crearHorarioSemanal();
         if(opcion == 7) mostrarHorarioDeLaSemana();
         if(opcion == 8) mostrarTodosLosBomberosDeLaEstacion(listaBomberos);
-
         printf("\n\n");
     }while(opcion != 0);
 
 
     printf("TOTAL BOMBEROS: %llu\n\n", talla);
     printf("¡Adios! ¡Que tenga buen día !\n\n");
+    free(listaBomberos);
     return 0;
 }
-

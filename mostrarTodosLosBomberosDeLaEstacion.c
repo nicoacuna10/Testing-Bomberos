@@ -11,6 +11,7 @@ typedef struct{
 void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos){
     int i, espacios;
     Bombero* aux = firstList(listaBomberos);
+    //se usa aux para recorrer toda la lista e imprimirla a continuación//
     printf("RUT            NOMBRE                        DISPONIBILIDAD\n");
     while(aux!=NULL){
         espacios = 10 - strlen(aux->rut);

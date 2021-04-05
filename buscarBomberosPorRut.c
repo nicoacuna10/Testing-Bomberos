@@ -11,6 +11,7 @@ typedef struct{
 }bombero;
 
 void buscarBomberosPorRut(char *rut, List *listaBomberos){
+    //Se ingresa rut por persona//
     printf("Ingrese RUT: ");
     scanf("%[^\n]s", rut);
     getchar();
@@ -47,6 +48,7 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
         }
         aux = nextList(listaBomberos);
     }
+    
     if(!encontrado){
         printf("NO EXISTE REGISTRO\n");
     }

@@ -50,6 +50,7 @@ char *get_csv_field (char * tmp, int k){
 }
 
 List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *talla){
+    //Se ingresa ruta de la archivo ingresado// 
     printf("Ingrese nombre del archivo .csv: ");
     scanf("%[^\n]s", nombreArchivo);
     getchar();
@@ -58,6 +59,8 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
       printf("\nARCHIVO NO ENCONTRADO\n");
       exit(1);
     }
+
+
     char linea[1000];
     char *aux;
     Bombero *b;
@@ -70,6 +73,7 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
         b->nombre = malloc(100*sizeof(char));
 
         //Se lee desde el archivo cvs los datos de las personas y se van agregando a la 'list'//
+        //Se usa 'b' para guardar todos los datos del archivo csv por persona y se guardan en lista//
         for( i = 0; i < 9; i++) {
             if(i==0){
               b->rut = get_csv_field(linea,i);
@@ -141,12 +145,13 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
             }
 
         }
-
+        //Se coloca todo lo guardado con 'b' en la lista//
         pushBack(listaBomberos,b);
         j++;
         printf("\n\n");
     }
 
     (*talla) = j;
+    //Creo que hay que hacerle free a 'b'//
     return listaBomberos;
 }

@@ -10,6 +10,7 @@ typedef struct{
 }Bombero;
 
 void porFavorIngreseAlgoValido(char *d){
+    //Esta función verifica que los datos ingresados sean validos//
     do{
         printf("Por favor Ingrese elementos VALIDOS\n");
         printf("Solo puede ser S mayúscula o N Mayúscula\n\n");
@@ -22,7 +23,8 @@ void porFavorIngreseAlgoValido(char *d){
 
 void agregarBombero(char *rut, char *nombre, int *disponibilidad, List* listaBomberos){
         char d;
-
+        
+        //Se lee rut y nombre//
         printf("Ingrese rut: ");
         scanf("%s", rut);
         getchar();
@@ -32,15 +34,17 @@ void agregarBombero(char *rut, char *nombre, int *disponibilidad, List* listaBom
 
 
         //Testing//
-        printf("%s\n", rut);
-        printf("%s\n", nombre);
+        //printf("%s\n", rut);
+        //printf("%s\n", nombre);
         //Fin testing//
 
+        /*Se ingresan disponibilidad por días de la semana.
+        Tambien se verifica si el dato es correcto       */
         printf("Por favor ingrese disponiblidad por persona: S = si, N = No\n");
         printf("Lunes: ");
         scanf("%c", &d);
         getchar();
-        if( (d != 'S') && (d != 'N') ) porFavorIngreseAlgoValido(&d); //Esta función ayuda a siempre corrobar que entregan el dato que corresponde :D//
+        if( (d != 'S') && (d != 'N') ) porFavorIngreseAlgoValido(&d); 
         if(d == 'S'){
             disponibilidad[0] = 1;
         }else disponibilidad[0] = 0;
@@ -93,7 +97,8 @@ void agregarBombero(char *rut, char *nombre, int *disponibilidad, List* listaBom
             disponibilidad[6] = 1;
         }else disponibilidad[6] = 0;
 
-
+        /*Nombre, rut y disponiblidad se guardan en en variable dinamica aux
+        y luego se realiza un pushback a la lista con aux*/
         int i;
         Bombero *aux = (Bombero*)malloc(sizeof(Bombero));
         strcpy(aux->rut,rut);
@@ -102,6 +107,7 @@ void agregarBombero(char *rut, char *nombre, int *disponibilidad, List* listaBom
             aux->disponibilidad[i] = disponibilidad[i];
         }
         pushBack(listaBomberos,aux);
+        //Tengo mi duda si debemos hacer free a aux//
 
     return;
 }

@@ -10,9 +10,12 @@ typedef struct{
 }Bombero;
 
 void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla){
+    //Se ingresa rut de persona a sacar de la lista//
     printf("Ingrese rut del bombero a despedir: ");
     scanf("%[^\n]s", rut);
     getchar();
+
+
     int i;
     bool encontrado;
     Bombero* aux = firstList(listaBomberos);

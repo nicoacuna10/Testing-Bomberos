@@ -34,6 +34,7 @@ void corroborarValidezDeDia(char *dia){
 
 
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
+    //Se ingresa y día y se corrobra que sea correcto//
     printf("Ingrese dia para buscar bomberos disponibles: ");
     scanf("%[^\n]s", dia);
     getchar();
@@ -43,10 +44,15 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     Bombero *aux;
 
 
+    //Se imprimen los días de las personas que pueden en el día ingresado trabajar //
     printf("RUT            NOMBRE\n");
 
     aux = firstList(listaBomberos);
-
+    /*Para cada día se hace lo siguiente: Se busca  corroborar la o las primeras letras
+    del la cadena ingresada. Luego se va a ese día en particular y se va recorriendo la
+    lista con cada una de las personas buscando si el día ingresado pueden trabajar o no.
+    Luego se imprime con formato bonito usando la diferencia entre rut y espacios      */ 
+    
     if(dia[0] == 'L'){
         while(aux!=NULL){
             if(aux->disponibilidad[0] == 1){
