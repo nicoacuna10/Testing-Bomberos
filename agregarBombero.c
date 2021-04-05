@@ -108,6 +108,6 @@ void agregarBombero(char *rut, char *nombre, int *disponibilidad, List* listaBom
         }
         pushBack(listaBomberos,aux);
         //Tengo mi duda si debemos hacer free a aux//
-
+        //free(aux);
     return;
 }

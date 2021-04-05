@@ -20,6 +20,8 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
     bool encontrado;
     bombero *aux = firstList(listaBomberos);
 
+    /*Se recorre con aux toda la lista y cada vez se va verificando si el rut es el encontrado.
+    Sino se encuentra rut se menciona por pantalla.                                          */
     while(aux!=NULL){
         i=0;
         encontrado = true;
@@ -27,6 +29,7 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
         for( i = 0; aux->rut[i]; i++){
             if(aux->rut[i] != rut[i]){
                 encontrado = false;
+                break;
             }
         }
         if(encontrado){
@@ -48,9 +51,11 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
         }
         aux = nextList(listaBomberos);
     }
-    
+
     if(!encontrado){
         printf("NO EXISTE REGISTRO\n");
     }
-
+    //Testing//
+    //free(aux);
+    return;
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "list.h"
 
 typedef struct{
@@ -29,4 +30,6 @@ void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos){
         aux = nextList(listaBomberos);
     }
     printf("\n\n");
+    //free(aux);
+    return;
 }

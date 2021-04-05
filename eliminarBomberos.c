@@ -19,6 +19,9 @@ void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla)
     int i;
     bool encontrado;
     Bombero* aux = firstList(listaBomberos);
+    /*Se recorre la lista con 'aux' y se verifica si se encuentra bombmero.
+    Si se encuentra se borrar con popcurrent y se sale del programa.
+    sino se imprime que no existe reigstro                               */
     while(aux!=NULL){
         i=0;
         encontrado = true;
@@ -26,6 +29,7 @@ void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla)
         for( i = 0; aux->rut[i]; i++){
             if(aux->rut[i] != rut[i]){
                 encontrado = false;
+                break;
             }
         }
         if(encontrado){
@@ -41,4 +45,7 @@ void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla)
     if(!encontrado){
         printf("NO EXISTE REGISTRO\n");
     }
+
+    //free(aux);
+    return;
 }

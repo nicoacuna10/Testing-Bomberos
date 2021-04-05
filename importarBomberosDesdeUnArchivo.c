@@ -153,5 +153,6 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
 
     (*talla) = j;
     //Creo que hay que hacerle free a 'b'//
+    //free(b);
     return listaBomberos;
 }

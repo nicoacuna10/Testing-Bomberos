@@ -129,6 +129,7 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
             aux = nextList(listaBomberos);
         }
     }
-
+    //Testing//
+    //free(aux);
     return;
 }

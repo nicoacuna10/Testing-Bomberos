@@ -21,8 +21,6 @@ void validarDato(char *d){
 }
 
 void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *listaBomberos){
-        //Hay que ver si sacamos rut de variable de entrada de la función//
-
         printf("Ingrese rut: ");
         scanf("%s", rut);
         getchar();
@@ -31,6 +29,7 @@ void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *li
         bool encontrado;
         bombero *aux = firstList(listaBomberos);
 
+        //Se recorre la lista con 'aux' y en el caso de encontrarse vamos cambiando la disponibilidad//
         while(aux!=NULL){
             i=0;
             encontrado = true;
@@ -115,4 +114,6 @@ void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *li
             printf("NO EXISTE REGISTRO");
         }
 
+    //free(aux);
+    return;
 }
