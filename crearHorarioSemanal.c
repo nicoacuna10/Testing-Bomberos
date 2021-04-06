@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "list.h"
 
 typedef struct{
@@ -8,21 +9,13 @@ typedef struct{
     int disponibilidad[7];
     int totalDeDiasDisponibles;
     int diasConTrabajo;
-}bombero;
+}Bombero;
 
-/*
-void intercambiarNodos(bombero *aux){
-    bombero *auxPtr = aux;
-    //El previo del siguiente pasa a tener el previo del actual//
-    aux->next->prev = auxPtr->prev;
-    aux->next->next = auxPtr;
-    aux->next = auxPtr->next->next;
+typedef struct{
+char nombre[101];
 
+}Semana;
 
-
-    return; 
-}
-*/
 
 int comparar(const void *a, const void *b){
     int *ptrA = (int *)a;
@@ -30,7 +23,7 @@ int comparar(const void *a, const void *b){
     return ( (*ptrA) - (*ptrB) );
 }
 
-void crearHorarioSemanal(List *listaBomberos, List *planificacionSemanal){
+List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana planificacionSemanal[35]){
     /*Como en las funciones anteriores nunca se inicializó 'diasContrabajo' 
     ahora lo hacemos con toda la lista con ceros. Esto es con el fin de 
     usar esta variable como un contador de cuantes veces hemos asignado a
@@ -40,8 +33,15 @@ void crearHorarioSemanal(List *listaBomberos, List *planificacionSemanal){
     O sea 'diasConTrabajo' = 0                                          */ 
     int diasQueSePuedeTrabajar = 0, i = 0, j = 0;
     unsigned long long totalBomberos = 0;
-    bombero *aux = firstList(listaBomberos);
 
+
+    /*Se borra primero todo el contenido de 'planificacionSemanal' en caso de haberse ejecutado esta función
+    más de una vez.                                                                                       */
+    cleanList(listaOrdenada);
+
+
+
+    Bombero *aux = firstList(listaBomberos);
     while(aux != NULL){
         aux->diasConTrabajo = 0;
         aux->totalDeDiasDisponibles = 0;
@@ -108,13 +108,14 @@ void crearHorarioSemanal(List *listaBomberos, List *planificacionSemanal){
     //Fin testing// 
 
 
+    //En esta sección se guarda en 'listaOrdeanda' las personas desde las que pueden trabajar menos hasta las que pueden más//
     j = 0;
     i = 0;
     aux = firstList(listaBomberos);
     while(aux != NULL){
 
         if(aux->totalDeDiasDisponibles == vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar[i]){
-            pushBack(planificacionSemanal,aux);
+            pushBack(listaOrdenada, aux);
             i++;
         }
 
@@ -123,28 +124,93 @@ void crearHorarioSemanal(List *listaBomberos, List *planificacionSemanal){
         if(aux == NULL) aux =firstList(listaBomberos);
     }
 
-    aux = firstList(planificacionSemanal);
+    //TESTING//
+    aux = firstList(listaOrdenada);
     while(aux != NULL){
         printf("%s\n", aux->nombre);
-        aux = nextList(planificacionSemanal);
+        aux = nextList(listaOrdenada);
+    }
+    //FIN TESTING//
+
+    i = 0;
+    j = 0;
+    int contador = 0;
+    aux = firstList(listaOrdenada);
+    //El bucle se sale cuando se llena el horario de trabajo semanal//
+    while(i != 35){
+        //Lunes//
+        if( (i <= 0) && (i < 5) ){
+            if(aux->disponibilidad[0] == 1){
+                strcpy(planificacionSemanal[i].nombre, aux->nombre);
+                i++;
+            }
+        }
+
+        //Martes//
+        if( (i >= 5) && (i < 10) ){
+            if(aux->disponibilidad[1] == 1){
+                strcpy(planificacionSemanal[i].nombre, aux->nombre);
+                i++;
+            }
+        }
+
+        //Miercoles//
+        if( (i >= 10) && (i < 15) ){
+            if(aux->disponibilidad[2] == 1){
+                strcpy(planificacionSemanal[i].nombre, aux->nombre);
+                i++;
+            }
+        }
+
+        //Jueves//
+        if( (i >= 15) && (i < 20) ){
+            if(aux->disponibilidad[3] == 1){
+                strcpy(planificacionSemanal[i].nombre, aux->nombre);
+                i++;
+            }
+        }
+
+        //Viernes//
+        if( (i >= 20) && (i < 25) ){
+            if(aux->disponibilidad[4] == 1){
+                strcpy(planificacionSemanal[i].nombre, aux->nombre);
+                i++;
+            }
+        }
+
+        //Sabado//
+        if( (i >= 25) && (i < 30) ){
+            if(aux->disponibilidad[5] == 1){
+                strcpy(planificacionSemanal[i].nombre, aux->nombre);
+                i++;
+            }
+        }
+
+        //Domingo//
+        if( (i >= 30) && (i < 35) ){
+            if(aux->disponibilidad[6] == 1){
+                strcpy(planificacionSemanal[i].nombre, aux->nombre);
+                i++;
+            }
+        }
+
+        /*Esta sección está para cuando se llegaron a buscar el máximo 
+        número de combinaciones posibles para crear la semana, si es que 
+        mal no lo estoy pensando. De todas maneras es un número grande y sirve
+        de testing. Pero hay que revisar si es matematicamente consistente!! */
+        contador++;
+        if(contador > (totalBomberos * 7)){
+            printf("No se puede crear horario con las personas ingresadas\n\n");
+            cleanList(listaOrdenada);
+            return listaOrdenada;
+        }
+
+        aux = nextList(listaOrdenada);
+        //Se reinicia 'aux' para empezar a buscar en la lista de nuevo//
+        if(aux == NULL) aux = firstList(listaOrdenada);
     }
 
-    /*
-    //Se ordena lista  con bubblesort desde las que personas que tienen menos disponibilidad a las que tienen más//
-    aux = firstList(listaBomberos);
-    for(i = 0; i < (totalBomberos - 1); i++){
-       for(j = 0; j < (totalBomberos - i - 1); j++){
-            if(aux->totalDeDiasDisponibles > aux->next->totalDeDiasDisponibles)
-                intercambiarNodos(aux);
-            aux = nextList();
-       }
-       aux =first(listaBomberos);
-       for(int k = 0; k < i; k++){
-           aux = nextList();
-       }
-    }
 
-    */
-
-    return;
+    //Si el programa fue existoso se entrega la lista ordenada. HAY QUE VER SI ES NECESARIO PARECE QUE YA NO :P //
+    return listaOrdenada;
 }

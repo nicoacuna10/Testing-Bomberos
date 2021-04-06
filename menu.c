@@ -2,7 +2,7 @@
 #include <string.h>
 
 void menu(int *opcion){
-    char entrada[1000];
+    char entrada[5000];
     int numero;
     do{
     memset(entrada, '\0', 1000);
