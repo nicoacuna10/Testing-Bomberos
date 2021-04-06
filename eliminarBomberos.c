@@ -7,6 +7,8 @@ typedef struct{
   char* rut;
   char* nombre;
   int disponibilidad[7];
+  int diasConTrabajo;
+  int totalDeDiasDisponibles;
 }Bombero;
 
 void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla){
@@ -46,6 +48,6 @@ void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla)
         printf("NO EXISTE REGISTRO\n");
     }
 
-    //free(aux);
+    free(aux);
     return;
 }

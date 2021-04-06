@@ -8,6 +8,8 @@ typedef struct{
     char* rut;
     char* nombre;
     int disponibilidad[7];
+    int diasConTrabajo;
+    int totalDeDiasDisponibles;
 }bombero;
 
 void buscarBomberosPorRut(char *rut, List *listaBomberos){
@@ -55,7 +57,6 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
     if(!encontrado){
         printf("NO EXISTE REGISTRO\n");
     }
-    //Testing//
-    //free(aux);
+
     return;
 }

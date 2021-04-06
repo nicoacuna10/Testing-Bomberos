@@ -7,6 +7,8 @@ typedef struct{
   char* rut;
   char* nombre;
   int disponibilidad[7];
+  int diasConTrabajo;
+  int totalDeDiasDisponibles;
 }Bombero;
 
 void porFavorIngreseAlgoValido(char *d){
@@ -32,11 +34,6 @@ void agregarBombero(char *rut, char *nombre, int *disponibilidad, List* listaBom
         scanf("%[^\n]s", nombre);
         getchar();
 
-
-        //Testing//
-        //printf("%s\n", rut);
-        //printf("%s\n", nombre);
-        //Fin testing//
 
         /*Se ingresan disponibilidad por días de la semana.
         Tambien se verifica si el dato es correcto       */
@@ -107,7 +104,6 @@ void agregarBombero(char *rut, char *nombre, int *disponibilidad, List* listaBom
             aux->disponibilidad[i] = disponibilidad[i];
         }
         pushBack(listaBomberos,aux);
-        //Tengo mi duda si debemos hacer free a aux//
-        //free(aux);
+        
     return;
 }

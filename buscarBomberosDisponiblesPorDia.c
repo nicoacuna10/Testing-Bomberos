@@ -8,6 +8,8 @@ typedef struct{
   char* rut;
   char* nombre;
   int disponibilidad[7];
+  int diasConTrabajo;
+  int totalDeDiasDisponibles;
 }Bombero;
 
 void corroborarValidezDeDia(char *dia){
@@ -129,7 +131,6 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
             aux = nextList(listaBomberos);
         }
     }
-    //Testing//
-    //free(aux);
+
     return;
 }

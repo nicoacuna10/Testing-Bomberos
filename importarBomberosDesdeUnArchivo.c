@@ -7,6 +7,8 @@ typedef struct{
   char* rut;
   char* nombre;
   int disponibilidad[7];
+  int diasConTrabajo;
+  int totalDeDiasDisponibles;
 }Bombero;
 
 char *get_csv_field (char * tmp, int k){
@@ -152,7 +154,5 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
     }
 
     (*talla) = j;
-    //Creo que hay que hacerle free a 'b'//
-    //free(b);
     return listaBomberos;
 }

@@ -7,6 +7,8 @@ typedef struct{
   char* rut;
   char* nombre;
   int disponibilidad[7];
+  int diasConTrabajo;
+  int totalDeDiasDisponibles;
 }Bombero;
 
 void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos){
@@ -30,6 +32,5 @@ void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos){
         aux = nextList(listaBomberos);
     }
     printf("\n\n");
-    //free(aux);
     return;
 }

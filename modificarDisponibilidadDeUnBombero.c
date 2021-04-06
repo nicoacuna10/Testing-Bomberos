@@ -7,6 +7,8 @@ typedef struct{
     char* rut;
     char* nombre;
     int disponibilidad[7];
+    int diasConTrabajo;
+    int totalDeDiasDisponibles;
 }bombero;
 
 void validarDato(char *d){
@@ -114,6 +116,5 @@ void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *li
             printf("NO EXISTE REGISTRO");
         }
 
-    //free(aux);
     return;
 }

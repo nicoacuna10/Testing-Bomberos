@@ -7,6 +7,8 @@ typedef struct{
   char* rut;
   char* nombre;
   int disponibilidad[7];
+  int diasConTrabajo;
+  int totalDeDiasDisponibles;
 }Bombero;
 
 void menu(int *opcion);
@@ -16,7 +18,7 @@ void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla)
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos);
 void buscarBomberosPorRut(char *rut, List *listaBomberos);
 void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *listaBomberos);
-void crearHorarioSemanal();
+void crearHorarioSemanal(List *listaBomberos, List *planificacionSemanal);
 void mostrarHorarioDeLaSemana();
 void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos);
 
@@ -25,6 +27,7 @@ int main(void){
     int opcion = 0;
     unsigned long long talla;
     List *listaBomberos = createList();
+    List *planificacionSemanal = createList();
     char nombreArchivo[100];
     char rut[11], nombre[101], dia[9];
     int disponibilidad[7];
@@ -42,7 +45,7 @@ int main(void){
         if(opcion == 3) buscarBomberosDisponiblesPorDia(dia,listaBomberos);
         if(opcion == 4) buscarBomberosPorRut(rut,listaBomberos);
         if(opcion == 5) modificarDisponibilidadDeUnBombero(rut,disponibilidad,listaBomberos);
-        if(opcion == 6) crearHorarioSemanal();
+        if(opcion == 6) crearHorarioSemanal(listaBomberos, planificacionSemanal);
         if(opcion == 7) mostrarHorarioDeLaSemana();
         if(opcion == 8) mostrarTodosLosBomberosDeLaEstacion(listaBomberos);
         printf("\n\n");
