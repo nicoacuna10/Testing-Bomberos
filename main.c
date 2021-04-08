@@ -18,7 +18,7 @@ char nombre[101];
 
 void menu(int *opcion);
 List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *talla);
-void agregarBombero(char *rut, char *nombre, int *disponibilidad, List *listaBomberos);
+void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List *listaBomberos);
 void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla);
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos);
 void buscarBomberosPorRut(char *rut, List *listaBomberos);

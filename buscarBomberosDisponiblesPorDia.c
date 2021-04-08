@@ -31,13 +31,14 @@ void corroborarValidezDeDia(char *dia){
     printf("¡Ha escrito algo que no es un día de la semana!\n\n Por favor ingrese día de la semana: ");
     scanf("%s", dia);
     getchar();
+    printf("\n");
     goto repetirFuncion;
 }
 
 
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     //Se ingresa y día y se corrobra que sea correcto//
-    printf("Ingrese dia para buscar bomberos disponibles: ");
+    printf("\nIngrese dia para buscar bomberos disponibles: ");
     scanf("%[^\n]s", dia);
     getchar();
     printf("\n"); //Enter para que se vea mejor estéticamente//

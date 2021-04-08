@@ -49,14 +49,6 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
         aux = nextList(listaBomberos);
     }
 
-    //Testing para ver si el código realizó 'diasConTrabajo' = 0//
-    aux = firstList(listaBomberos);
-    while(aux != NULL){
-        printf("%d - ", aux->diasConTrabajo);
-        aux = nextList(listaBomberos);
-    }
-    printf("Total bomberos: %llu\n\n", totalBomberos);
-    //Fin testing// 
 
 
     //Se inicializa memoria para vector que guarda en cada casilla el total de 'diasConTrabajo' de cada persona//
@@ -78,34 +70,11 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
     
     j = 0; //MIRAR SI AL FINAL DE TODO ESTA INSTRUCION NO ES NECESARIA//
 
-    //Testing//
-    printf("Vector: ");
-    for(i = 0; vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar[i]; i++){
-        printf("%d - ", vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar[i]);
-    }
-    printf("\n\n");
-    //Fin testing// 
 
-    //TESTING PARA SABER SI TOTALDEDIASDISPONIBLES SE GUARDÓ CORRECTAMENTE//
-    aux = firstList(listaBomberos);
-    printf("TotalDisponibilidad: ");
-    while(aux != NULL){
-        printf("%d - ", aux->totalDeDiasDisponibles);
-        aux = nextList(listaBomberos);
-    }
-    //FIN TESTING//
 
     //Se realiza quickSort a vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar//
     qsort(vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar, totalBomberos, sizeof(int), comparar);
 
-    //Testing//
-    printf("\n\n");
-    printf("Vector: ");
-    for(i = 0; vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar[i]; i++){
-        printf("%d - ", vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar[i]);
-    }
-    printf("\n\n");
-    //Fin testing// 
 
     //En esta sección se guarda en 'listaOrdeanda' las personas desde las que pueden trabajar menos hasta las que pueden más//
     j = 0;
@@ -121,13 +90,8 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
         aux = nextList(listaBomberos);        
         if(aux == NULL) aux =firstList(listaBomberos);
     }
-    /*//TESTING//
-    aux = firstList(listaOrdenada);
-    while(aux != NULL){
-        printf("%s\n", aux->nombre);
-        aux = nextList(listaOrdenada);
-    }
-    //FIN TESTING//*/
+
+
 
     i = 0;
     j = 0;
@@ -138,7 +102,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
         
         //Lunes//
         if( (i >= 0) && (i < 5) ){
-            if(aux->disponibilidad[0] == 1){
+            if( (aux->disponibilidad[0] == 1) && (aux->diasConTrabajo < 5) && (aux->diasConTrabajo < aux->totalDeDiasDisponibles) ){
                 strcpy(planificacionSemanal[i].nombre, aux->nombre);
                 i++;
             }
@@ -146,7 +110,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
 
         //Martes//
         if( (i >= 5) && (i < 10) ){
-            if(aux->disponibilidad[1] == 1){
+            if( (aux->disponibilidad[1] == 1 )&& (aux->diasConTrabajo < 5) && (aux->diasConTrabajo < aux->totalDeDiasDisponibles) ){
                 strcpy(planificacionSemanal[i].nombre, aux->nombre);
                 i++;
             }
@@ -154,7 +118,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
 
         //Miercoles//
         if( (i >= 10) && (i < 15) ){
-            if(aux->disponibilidad[2] == 1){
+            if( (aux->disponibilidad[2] == 1) && (aux->diasConTrabajo < 5) && (aux->diasConTrabajo < aux->totalDeDiasDisponibles) ){
                 strcpy(planificacionSemanal[i].nombre, aux->nombre);
                 i++;
             }
@@ -162,7 +126,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
 
         //Jueves//
         if( (i >= 15) && (i < 20) ){
-            if(aux->disponibilidad[3] == 1){
+            if( (aux->disponibilidad[3] == 1) && (aux->diasConTrabajo < 5) && (aux->diasConTrabajo < aux->totalDeDiasDisponibles) ){
                 strcpy(planificacionSemanal[i].nombre, aux->nombre);
                 i++;
             }
@@ -170,7 +134,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
 
         //Viernes//
         if( (i >= 20) && (i < 25) ){
-            if(aux->disponibilidad[4] == 1){
+            if( (aux->disponibilidad[4] == 1) && (aux->diasConTrabajo < 5) && (aux->diasConTrabajo < aux->totalDeDiasDisponibles) ){
                 strcpy(planificacionSemanal[i].nombre, aux->nombre);
                 i++;
             }
@@ -178,7 +142,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
 
         //Sabado//
         if( (i >= 25) && (i < 30) ){
-            if(aux->disponibilidad[5] == 1){
+            if( (aux->disponibilidad[5] == 1) && (aux->diasConTrabajo < 5) && (aux->diasConTrabajo < aux->totalDeDiasDisponibles) ){
                 strcpy(planificacionSemanal[i].nombre, aux->nombre);
                 i++;
             }
@@ -186,7 +150,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
 
         //Domingo//
         if( (i >= 30) && (i < 35) ){
-            if(aux->disponibilidad[6] == 1){
+            if( (aux->disponibilidad[6] == 1) && (aux->diasConTrabajo < 5) && (aux->diasConTrabajo < aux->totalDeDiasDisponibles) ){
                 strcpy(planificacionSemanal[i].nombre, aux->nombre);
                 i++;
             }
@@ -210,5 +174,6 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
 
 
     //Si el programa fue existoso se entrega la lista ordenada. HAY QUE VER SI ES NECESARIO PARECE QUE YA NO :P //
+    printf("\n\n¡Horario semanal creado exitosamente!\n");
     return listaOrdenada;
 }

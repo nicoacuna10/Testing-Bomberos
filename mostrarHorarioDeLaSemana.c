@@ -25,22 +25,9 @@ void mostrarHorarioDeLaSemana(List *listaOrdenada, Semana planificacionSemanal[3
         return;
     }
 
-    //TESTING//
-    int i;
-    
-    aux = firstList(listaOrdenada);
-    for(i = 0; i < 15; i++){
-            strcpy(planificacionSemanal[i].nombre, aux->nombre);
-            aux = nextList(listaOrdenada);
-    }
 
-    printf("\n\n");
-
-    for(i = 0; i < 15; i++) printf("%s\n",planificacionSemanal[i].nombre);
-    //FIN TESTING//
-
-    //Esta es la parte de la función de verdad, la parte de al medio es testing y aprendizaje de implementación(ayuda memoria)//
-    for(i = 0; i < 35; i++){
+    //Impresión de horario de la semana//
+    for(int i = 0; i < 35; i++){
         if(i == 0)  printf("\n\nLUNES\n");
         if(i == 5)  printf("\n\nMARTES\n");
         if(i == 10) printf("\n\nMIERCOLES\n");
@@ -54,5 +41,4 @@ void mostrarHorarioDeLaSemana(List *listaOrdenada, Semana planificacionSemanal[3
 
 
     return;
-
 }

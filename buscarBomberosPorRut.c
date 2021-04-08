@@ -14,7 +14,7 @@ typedef struct{
 
 void buscarBomberosPorRut(char *rut, List *listaBomberos){
     //Se ingresa rut por persona//
-    printf("Ingrese RUT: ");
+    printf("\nIngrese RUT: ");
     scanf("%[^\n]s", rut);
     getchar();
 

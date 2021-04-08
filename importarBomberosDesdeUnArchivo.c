@@ -79,11 +79,9 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
         for( i = 0; i < 9; i++) {
             if(i==0){
               b->rut = get_csv_field(linea,i);
-              printf("%s ", b->rut);
             }
             if(i==1){
               b->nombre = get_csv_field(linea,i);
-              printf("%s ", b->nombre);
             }
 
             if(i==2){
@@ -91,14 +89,12 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
               if(aux[0] == 'S'){
                 b->disponibilidad[0] = 1;
               }else b->disponibilidad[0] = 0;
-              printf("%d ", b->disponibilidad[0]);
             }
             if(i==3){
               aux = get_csv_field(linea,i);
               if(aux[0] == 'S'){
                 b->disponibilidad[1] = 1;
               }else b->disponibilidad[1] = 0;
-              printf("%d ", b->disponibilidad[1]);
 
             }
             if(i==4){
@@ -106,7 +102,6 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
               if(aux[0] == 'S'){
                 b->disponibilidad[2] = 1;
               }else b->disponibilidad[2] = 0;
-              printf("%d ", b->disponibilidad[2]);
 
             }
             if(i==5){
@@ -115,7 +110,6 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
                 b->disponibilidad[3] = 1;
               }else b->disponibilidad[3] = 0;
 
-              printf("%d ", b->disponibilidad[3]);
 
             }
             if(i==6){
@@ -124,7 +118,6 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
                 b->disponibilidad[4] = 1;
               }else b->disponibilidad[4] = 0;
 
-              printf("%d ", b->disponibilidad[4]);
 
             }
             if(i==7){
@@ -133,8 +126,6 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
                 b->disponibilidad[5] = 1;
               }else b->disponibilidad[5] = 0;
 
-              printf("%d ", b->disponibilidad[5]);
-
             }
             if(i==8){
               aux = get_csv_field(linea,i);
@@ -142,17 +133,15 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
                 b->disponibilidad[6] = 1;
               }else b->disponibilidad[6] = 0;
 
-              printf("%d ", b->disponibilidad[6]);
-
             }
 
         }
         //Se coloca todo lo guardado con 'b' en la lista//
         pushBack(listaBomberos,b);
         j++;
-        printf("\n\n");
     }
 
+    printf("\n\n¡Importacion realizada con exito!\n\n");
     (*talla) = j;
     return listaBomberos;
 }
