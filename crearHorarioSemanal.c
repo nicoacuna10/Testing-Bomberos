@@ -161,7 +161,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
         mal no lo estoy pensando. De todas maneras es un número grande y sirve
         de testing. Pero hay que revisar si es matematicamente consistente!! */
         contador++;
-        if(contador > (totalBomberos * 7)){
+        if(contador > (totalBomberos * 7 * 7)){
             printf("No se puede crear horario con las personas ingresadas\n\n");
             cleanList(listaOrdenada);
             return listaOrdenada;

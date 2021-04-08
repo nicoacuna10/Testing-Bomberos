@@ -26,10 +26,12 @@ void porFavorIngreseAlgoValido(char d[5000]){
 
 void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List* listaBomberos){
         char d[5000];
-        
+        memset(rut, '\0', 11);
+        memset(nombre, '\0', 101);
+
         //Se lee rut y nombre//
         printf("Ingrese rut: ");
-        scanf("%s", rut);
+        scanf("%[^\n]s", rut);
         getchar();
         printf("Ingrese nombre: ");
         scanf("%[^\n]s", nombre);
@@ -102,18 +104,28 @@ void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List*
 
         /*Nombre, rut y disponiblidad se guardan en en variable dinamica aux
         y luego se realiza un pushback a la lista con aux*/
-        int i;
-        Bombero *aux = (Bombero*)malloc(sizeof(Bombero));
-        if(aux == NULL){
+        printf("%s\n", rut);
+        printf("%s\n", nombre);
+        int i = 0;
+        Bombero *auxB = (Bombero *) malloc(sizeof(Bombero) );
+        //Bombero *auxB = (Bombero*) realloc(auxB,1 * sizeof(Bombero));
+        if(auxB == NULL){
             printf("Error en inicializar memoria en funcion agregar bombero\n\n"); exit(1);
         }
-        strcpy(aux->rut,rut);
-        printf("\nError2: ");
-        strcpy(aux->nombre,nombre);
-        for( i = 0; i < 7; i++){
-            aux->disponibilidad[i] = disponibilidad[i];
+
+        strcpy(auxB->rut, rut);
+        while(rut[i] != '\0'){
+            printf("%c", rut[i]);
+            i++;
         }
-        pushBack(listaBomberos,aux);
+        printf("\n");
+        //for(i = 0; rut[i]; i++) auxB->rut[i] = rut[i];
+        printf("\nError3: ");
+        //strcpy(aux->nombre,nombre);
+        for( i = 0; i < 7; i++){
+            auxB->disponibilidad[i] = disponibilidad[i];
+        }
+        pushBack(listaBomberos,auxB);
         
     return;
 }
