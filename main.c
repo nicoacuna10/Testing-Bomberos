@@ -23,7 +23,7 @@ void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla)
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos);
 void buscarBomberosPorRut(char *rut, List *listaBomberos);
 void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *listaBomberos);
-List *crearHorarioSemanal(List *listaBomberos, List *listOrdenada);
+List *crearHorarioSemanal(List *listaBomberos, List *listOrdenada, Semana* planificacionSemanal);
 void mostrarHorarioDeLaSemana(List *listaOrdenada,Semana planificacionSemanal[35]);
 void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos);
 
@@ -51,7 +51,7 @@ int main(void){
         if(opcion == 3) buscarBomberosDisponiblesPorDia(dia,listaBomberos);
         if(opcion == 4) buscarBomberosPorRut(rut,listaBomberos);
         if(opcion == 5) modificarDisponibilidadDeUnBombero(rut,disponibilidad,listaBomberos);
-        if(opcion == 6) listaOrdenada = crearHorarioSemanal(listaBomberos, listaOrdenada);
+        if(opcion == 6) listaOrdenada = crearHorarioSemanal(listaBomberos, listaOrdenada, planificacionSemanal);
         if(opcion == 7) mostrarHorarioDeLaSemana(listaOrdenada, planificacionSemanal);
         if(opcion == 8) mostrarTodosLosBomberosDeLaEstacion(listaBomberos);
         printf("\n\n");
