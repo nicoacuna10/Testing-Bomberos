@@ -93,7 +93,7 @@ void agregarBombero(char *rut, char *nombre, int *disponibilidad, List* listaBom
         if(d == 'S'){
             disponibilidad[6] = 1;
         }else disponibilidad[6] = 0;
-
+        printf("8\n");
         /*Nombre, rut y disponiblidad se guardan en en variable dinamica aux
         y luego se realiza un pushback a la lista con aux*/
         int i;

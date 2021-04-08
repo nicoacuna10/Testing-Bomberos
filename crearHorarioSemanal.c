@@ -23,7 +23,7 @@ int comparar(const void *a, const void *b){
     return ( (*ptrA) - (*ptrB) );
 }
 
-List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana planificacionSemanal[35]){
+List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* planificacionSemanal){
     /*Como en las funciones anteriores nunca se inicializó 'diasContrabajo' 
     ahora lo hacemos con toda la lista con ceros. Esto es con el fin de 
     usar esta variable como un contador de cuantes veces hemos asignado a
@@ -107,7 +107,6 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana plani
     printf("\n\n");
     //Fin testing// 
 
-
     //En esta sección se guarda en 'listaOrdeanda' las personas desde las que pueden trabajar menos hasta las que pueden más//
     j = 0;
     i = 0;
@@ -118,19 +117,17 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana plani
             pushBack(listaOrdenada, aux);
             i++;
         }
-
         if(i == totalBomberos) break;
         aux = nextList(listaBomberos);        
         if(aux == NULL) aux =firstList(listaBomberos);
     }
-
-    //TESTING//
+    /*//TESTING//
     aux = firstList(listaOrdenada);
     while(aux != NULL){
         printf("%s\n", aux->nombre);
         aux = nextList(listaOrdenada);
     }
-    //FIN TESTING//
+    //FIN TESTING//*/
 
     i = 0;
     j = 0;
@@ -138,8 +135,9 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana plani
     aux = firstList(listaOrdenada);
     //El bucle se sale cuando se llena el horario de trabajo semanal//
     while(i != 35){
+        
         //Lunes//
-        if( (i <= 0) && (i < 5) ){
+        if( (i >= 0) && (i < 5) ){
             if(aux->disponibilidad[0] == 1){
                 strcpy(planificacionSemanal[i].nombre, aux->nombre);
                 i++;
