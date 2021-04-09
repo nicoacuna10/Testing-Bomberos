@@ -112,6 +112,15 @@ void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List*
         if(auxB == NULL){
             printf("Error en inicializar memoria en funcion agregar bombero\n\n"); exit(1);
         }
+        auxB->rut = (char *) malloc(11 * sizeof(char) );
+        if(auxB->rut == NULL){
+            printf("Error en inicializar rut en funcion agregar bombero\n");
+        }
+        auxB->nombre = (char *) malloc(101 * sizeof(char) );
+        if(auxB->nombre == NULL){
+            printf("Error en inicialiar nombre en funcion agregar bombero\n");
+
+        }
 
         strcpy(auxB->rut, rut);
         while(rut[i] != '\0'){
@@ -121,7 +130,7 @@ void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List*
         printf("\n");
         //for(i = 0; rut[i]; i++) auxB->rut[i] = rut[i];
         printf("\nError3: ");
-        //strcpy(aux->nombre,nombre);
+        strcpy(auxB->nombre,nombre);
         for( i = 0; i < 7; i++){
             auxB->disponibilidad[i] = disponibilidad[i];
         }
