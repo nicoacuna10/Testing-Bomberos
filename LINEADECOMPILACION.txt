@@ -1,0 +1,2 @@
+gcc buscarBomberosPorRut.c crearHorarioSemanal.c eliminarBomberos.c importarBomberosDesdeUnArchivo.c list.c main.c menu.c  mostrarHorarioDeLaSemana.c mostrarTodosLosBomberosDeLaEstacion.c agregarBombero.c buscarBomberosDisponiblesPorDia.c modificarDisponibilidadDeUnBombero.c -o main
+

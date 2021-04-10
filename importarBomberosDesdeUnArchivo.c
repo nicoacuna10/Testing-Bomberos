@@ -51,7 +51,7 @@ char *get_csv_field (char * tmp, int k){
     return NULL;
 }
 
-List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *talla){
+List *importarBomberosDesdeUnArchivo(List *listaBomberos, char *nombreArchivo, unsigned long long *talla){
     //Se ingresa ruta de la archivo ingresado// 
     printf("Ingrese nombre del archivo .csv: ");
     scanf("%[^\n]s", nombreArchivo);
@@ -59,15 +59,15 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
     FILE *fp = fopen(nombreArchivo,"r");
     if(fp == NULL){
       printf("\nARCHIVO NO ENCONTRADO\n");
-      exit(1);
+      return listaBomberos;
     }
 
 
     char linea[1000];
     char *aux;
     Bombero *b;
-    List *listaBomberos = createList();
     int i, j = 0;
+
 
     while(fgets (linea, 1000, fp) != NULL){
         b = (Bombero*)malloc(sizeof(Bombero));
@@ -153,5 +153,6 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
 
     printf("\n\n¡Importacion realizada con exito!\n\n");
     (*talla) = j;
+
     return listaBomberos;
 }

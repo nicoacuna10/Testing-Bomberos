@@ -19,7 +19,7 @@ void menu(int *opcion){
     printf("9. Mostrar todods los Bomberos\n");
     printf("0. Salir\n\n");
     printf("Por favor ingrese un opción de 0 al 9: ");
-    scanf("%[^\n]s", &entrada);
+    scanf("%[^\n]s", entrada);
     getchar();
     numero = entrada[0] - 48; //Diferencia ascii para conseguir entradas precisas para numeros enteros//
     if( ( (numero < 0) || (numero > 9) ) || entrada[1] != '\0' ) printf("Opción no valida!\n\n");

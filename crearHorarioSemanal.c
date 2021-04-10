@@ -88,10 +88,15 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
     }
 
 
-
+    //Se calcula el limte de iteraciones del siguiente bucle while//
+    long long int limite = 1; 
+    for(i = 2, j = 0; j < totalBomberos; j++) limite *= i;
     i = 0;
     j = 0;
-    int contador = 0;
+    limite *= 7;
+
+    //Se comienza a crear horario semanal en 'planificacionSemanal' //
+    long long int contador = 0;
     aux = firstList(listaOrdenada);
     //El bucle se sale cuando se llena el horario de trabajo semanal//
     while(i != 35){
@@ -152,12 +157,8 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
             }
         }
 
-        /*Esta sección está para cuando se llegaron a buscar el máximo 
-        número de combinaciones posibles para crear la semana, si es que 
-        mal no lo estoy pensando. De todas maneras es un número grande y sirve
-        de testing. Pero hay que revisar si es matematicamente consistente!! */
         contador++;
-        if(contador > (totalBomberos * 7 * 7)){
+        if(contador > limite){ //Si 'contador' llega a superar a 'limite' se detiene la creación del horario //
             printf("No se puede crear horario con las personas ingresadas\n\n");
             cleanList(listaOrdenada);
             return listaOrdenada;

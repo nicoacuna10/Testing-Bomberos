@@ -104,8 +104,6 @@ void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List*
 
         /*Nombre, rut y disponiblidad se guardan en en variable dinamica aux
         y luego se realiza un pushback a la lista con aux*/
-        printf("%s\n", rut);
-        printf("%s\n", nombre);
         int i = 0;
         Bombero *aux = (Bombero *) malloc(sizeof(Bombero) );
         if(aux == NULL){

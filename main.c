@@ -17,7 +17,7 @@ char nombre[101];
 }Semana;
 
 void menu(int *opcion);
-List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *talla);
+List *importarBomberosDesdeUnArchivo(List *listaBomberos, char *nombreArchivo, unsigned long long *talla);
 void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List *listaBomberos);
 void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla);
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos);
@@ -43,7 +43,7 @@ int main(void){
     do{
         menu(&opcion);
         if(opcion == 0) break;
-        if(opcion == 1) listaBomberos = importarBomberosDesdeUnArchivo(nombreArchivo, &talla);
+        if(opcion == 1) listaBomberos = importarBomberosDesdeUnArchivo(listaBomberos, nombreArchivo, &talla);
         if(opcion == 2){ agregarBombero(rut,nombre,disponibilidad,listaBomberos); talla++;}
         if(opcion == 3) eliminarBomberos(rut,listaBomberos, &talla);
         if(opcion == 4) buscarBomberosDisponiblesPorDia(dia,listaBomberos);
