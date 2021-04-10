@@ -12,25 +12,23 @@ typedef struct{
 }Bombero;
 
 typedef struct{
-char nombre[101];
-
+  char nombre[101];
 }Semana;
 
 void menu(int *opcion);
-List *importarBomberosDesdeUnArchivo(List *listaBomberos, char *nombreArchivo, unsigned long long *talla);
+List *importarBomberosDesdeUnArchivo(List *listaBomberos, char *nombreArchivo);
 void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List *listaBomberos);
-void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla);
+void eliminarBomberos(char *rut, List *listaBomberos);
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos);
 void buscarBomberosPorRut(char *rut, List *listaBomberos);
 void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *listaBomberos);
 List *crearHorarioSemanal(List *listaBomberos, List *listOrdenada, Semana* planificacionSemanal);
-void mostrarHorarioDeLaSemana(List *listaOrdenada,Semana planificacionSemanal[35]);
+void mostrarHorarioDeLaSemana(List *listaOrdenada, Semana planificacionSemanal[35]);
 void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos);
 
 
 int main(void){
     int opcion = 0;
-    unsigned long long talla = 0;
     List *listaBomberos = createList();
     List *listaOrdenada = createList();
     Semana planificacionSemanal[35];
@@ -43,9 +41,9 @@ int main(void){
     do{
         menu(&opcion);
         if(opcion == 0) break;
-        if(opcion == 1) listaBomberos = importarBomberosDesdeUnArchivo(listaBomberos, nombreArchivo, &talla);
-        if(opcion == 2){ agregarBombero(rut,nombre,disponibilidad,listaBomberos); talla++;}
-        if(opcion == 3) eliminarBomberos(rut,listaBomberos, &talla);
+        if(opcion == 1) listaBomberos = importarBomberosDesdeUnArchivo(listaBomberos, nombreArchivo);
+        if(opcion == 2) agregarBombero(rut,nombre,disponibilidad,listaBomberos);
+        if(opcion == 3) eliminarBomberos(rut,listaBomberos);
         if(opcion == 4) buscarBomberosDisponiblesPorDia(dia,listaBomberos);
         if(opcion == 5) buscarBomberosPorRut(rut,listaBomberos);
         if(opcion == 6) modificarDisponibilidadDeUnBombero(rut,disponibilidad,listaBomberos);
@@ -56,7 +54,8 @@ int main(void){
     }while(opcion != 0);
 
 
-    printf("¡Adios! ¡Que tenga buen día !\n\n");
+    printf("¡Adios! ¡Que tenga buen dia !\n\n");
     free(listaBomberos);
+    free(listaOrdenada);
     return 0;
 }

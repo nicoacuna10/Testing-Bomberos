@@ -18,7 +18,7 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
     scanf("%[^\n]s", rut);
     getchar();
 
-    int i, espacios;
+    int i, j, espacios;
     bool encontrado;
     bombero *aux = firstList(listaBomberos);
 
@@ -29,6 +29,7 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
         encontrado = true;
         aux->rut = (char*)aux->rut;
 
+        //Se compara cada uno de los caracteres de aux->rut y rut//
         for( i = 0; aux->rut[i]; i++){
             if(aux->rut[i] != rut[i]){
                 encontrado = false;
@@ -37,12 +38,15 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
         }
 
         if(encontrado){
+            //Se imprime el rut y el nombre del bombero//
             printf("RUT            NOMBRE                        DISPONIBILIDAD\n");
             espacios = 10 - strlen(aux->rut);
-            if(espacios == 1){ printf(" "); }
+            for(j = 0; j < espacios; j++){
+                printf(" ");
+            }
             printf("%s     %s", aux->rut, aux->nombre);
             espacios = 30 - strlen(aux->nombre);
-            for( i = 0; i < espacios; i++){
+            for( j = 0; j < espacios; j++){
                 printf(" ");
             }
 

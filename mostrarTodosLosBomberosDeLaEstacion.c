@@ -19,7 +19,9 @@ void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos){
     printf("\nRUT            NOMBRE                        DISPONIBILIDAD\n");
     while(aux!=NULL){
         espacios = 10 - strlen(aux->rut);
-        if(espacios == 1){ printf(" "); }
+        for(i = 0; i < espacios; i++){
+            printf(" ");
+        }
         printf("%s     %s", aux->rut, aux->nombre);
         espacios = 30 - strlen(aux->nombre);
         for( i = 0; i < espacios; i++){

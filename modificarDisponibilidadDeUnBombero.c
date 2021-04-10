@@ -15,7 +15,7 @@ typedef struct{
 void validarDato(char d[5000]){
     do{
         printf("Por favor Ingrese elementos VALIDOS\n");
-        printf("Solo puede ser S mayúscula o N Mayúscula\n\n");
+        printf("Solo puede ser S mayuscula o N Mayuscula\n\n");
         printf("Por favor ingrese su opción: ");
         scanf("%[^\n]s", d);
         while( ( getchar() ) != '\n');
@@ -43,7 +43,7 @@ void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *li
                 }
             }
 
-            //Si se encontró se cambia la disponibilidad//
+            //Si se encontró se cambia la disponibilidad, validando el ingreso correcto del formato//
             if(encontrado){
                 char d[5000]; 
 

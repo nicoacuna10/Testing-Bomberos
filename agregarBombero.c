@@ -16,8 +16,8 @@ void porFavorIngreseAlgoValido(char entrada[5000]){
     do{
         memset(entrada, '\0', 5000);
         printf("Por favor Ingrese elementos VALIDOS\n");
-        printf("Solo puede ser S mayúscula o N Mayúscula\n\n");
-        printf("Por favor ingrese su opción: ");
+        printf("Solo puede ser S mayuscula o N Mayuscula\n\n");
+        printf("Por favor ingrese su opcion: ");
         scanf("%[^\n]s", entrada);
         getchar();
     }while( (entrada[0] != 'S') && (entrada[0] != 'N')  || (entrada[1] != '\0') );
@@ -123,7 +123,7 @@ void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List*
         strcpy(aux->rut, rut);
         strcpy(aux->nombre,nombre);
 
-
+        //Se copian los valores de disponibilidad a 'aux'//
         for( i = 0; i < 7; i++){
             aux->disponibilidad[i] = disponibilidad[i];
         }

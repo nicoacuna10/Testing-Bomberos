@@ -21,7 +21,7 @@ void mostrarHorarioDeLaSemana(List *listaOrdenada, Semana planificacionSemanal[3
     //Primero se verifica si se creo una lista en 'listaOrdenada'; o sea si se ingreso a la opción 6//    
     Bombero *aux = firstList(listaOrdenada);
     if(aux == NULL){
-        printf("Por favor selecione la opcion crear horario antes de ingresar a esta opción");
+        printf("Por favor selecione la opcion crear horario antes de ingresar a esta opcion");
         return;
     }
 
@@ -39,6 +39,6 @@ void mostrarHorarioDeLaSemana(List *listaOrdenada, Semana planificacionSemanal[3
         printf("%s\n", planificacionSemanal[i].nombre);
     }
 
-
+    cleanList(listaOrdenada);
     return;
 }
