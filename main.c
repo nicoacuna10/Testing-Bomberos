@@ -40,20 +40,18 @@ int main(void){
     memset(rut, '\0', 11);
     memset(nombre, '\0', 101);
 
-
-    listaBomberos = importarBomberosDesdeUnArchivo(nombreArchivo, &talla);
-
     do{
         menu(&opcion);
         if(opcion == 0) break;
-        if(opcion == 1){ agregarBombero(rut,nombre,disponibilidad,listaBomberos); talla++;}
-        if(opcion == 2) eliminarBomberos(rut,listaBomberos, &talla);
-        if(opcion == 3) buscarBomberosDisponiblesPorDia(dia,listaBomberos);
-        if(opcion == 4) buscarBomberosPorRut(rut,listaBomberos);
-        if(opcion == 5) modificarDisponibilidadDeUnBombero(rut,disponibilidad,listaBomberos);
-        if(opcion == 6) listaOrdenada = crearHorarioSemanal(listaBomberos, listaOrdenada, planificacionSemanal);
-        if(opcion == 7) mostrarHorarioDeLaSemana(listaOrdenada, planificacionSemanal);
-        if(opcion == 8) mostrarTodosLosBomberosDeLaEstacion(listaBomberos);
+        if(opcion == 1) listaBomberos = importarBomberosDesdeUnArchivo(nombreArchivo, &talla);
+        if(opcion == 2){ agregarBombero(rut,nombre,disponibilidad,listaBomberos); talla++;}
+        if(opcion == 3) eliminarBomberos(rut,listaBomberos, &talla);
+        if(opcion == 4) buscarBomberosDisponiblesPorDia(dia,listaBomberos);
+        if(opcion == 5) buscarBomberosPorRut(rut,listaBomberos);
+        if(opcion == 6) modificarDisponibilidadDeUnBombero(rut,disponibilidad,listaBomberos);
+        if(opcion == 7) listaOrdenada = crearHorarioSemanal(listaBomberos, listaOrdenada, planificacionSemanal);
+        if(opcion == 8) mostrarHorarioDeLaSemana(listaOrdenada, planificacionSemanal);
+        if(opcion == 9) mostrarTodosLosBomberosDeLaEstacion(listaBomberos);
         printf("\n\n");
     }while(opcion != 0);
 

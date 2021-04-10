@@ -93,11 +93,8 @@ void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List*
         scanf("%[^\n]s", d);
         getchar();
 
-        printf("Error0: ");
         if( (d[0] != 'S') && (d[0] != 'N') || (d[1] != '\0') ) porFavorIngreseAlgoValido(d);
-        printf("Error1: ");
         if(d[0] == 'S'){
-            printf("\nError2: ");
             disponibilidad[6] = 1;
         }else disponibilidad[6] = 0;
         printf("\n");
@@ -129,7 +126,7 @@ void agregarBombero(char rut[11], char nombre[101], int disponibilidad[7], List*
         }
         printf("\n");
         //for(i = 0; rut[i]; i++) auxB->rut[i] = rut[i];
-        printf("\nError3: ");
+        
         strcpy(auxB->nombre,nombre);
         for( i = 0; i < 7; i++){
             auxB->disponibilidad[i] = disponibilidad[i];
