@@ -28,12 +28,14 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
         i=0;
         encontrado = true;
         aux->rut = (char*)aux->rut;
+
         for( i = 0; aux->rut[i]; i++){
             if(aux->rut[i] != rut[i]){
                 encontrado = false;
                 break;
             }
         }
+
         if(encontrado){
             printf("RUT            NOMBRE                        DISPONIBILIDAD\n");
             espacios = 10 - strlen(aux->rut);
@@ -43,17 +45,20 @@ void buscarBomberosPorRut(char *rut, List *listaBomberos){
             for( i = 0; i < espacios; i++){
                 printf(" ");
             }
+
             //Se imprimen los días y su respectiva disponibilidad//
             int j;
             printf("[");
             for(j = 0; j < 7; j++) printf("%d ", aux->disponibilidad[j]);
-
             printf("]\n");
+
             return;
         }
+
         aux = nextList(listaBomberos);
     }
 
+    //Si no se encontró a nadie se indica por pantalla//
     if(!encontrado){
         printf("NO EXISTE REGISTRO\n");
     }

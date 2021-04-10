@@ -37,7 +37,7 @@ void corroborarValidezDeDia(char *dia){
 
 
 void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
-    //Se ingresa y día y se corrobra que sea correcto//
+    //Se ingresa día y se corrobra que sea correcto//
     printf("\nIngrese dia para buscar bomberos disponibles: ");
     scanf("%[^\n]s", dia);
     getchar();
@@ -55,7 +55,8 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
     del la cadena ingresada. Luego se va a ese día en particular y se va recorriendo la
     lista con cada una de las personas buscando si el día ingresado pueden trabajar o no.
     Luego se imprime con formato bonito usando la diferencia entre rut y espacios      */ 
-    
+
+    //Lunes// 
     if(dia[0] == 'L'){
         while(aux!=NULL){
             if(aux->disponibilidad[0] == 1){
@@ -67,6 +68,7 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
         }
     }
 
+    //Martes//
     if(dia[0] == 'M' && dia[1] == 'A'){
         while(aux!=NULL){
             if(aux->disponibilidad[1] == 1){
@@ -78,6 +80,7 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
         }
     }
 
+    //Miercoles//
     if(dia[0] == 'M' && dia[1] == 'I'){
         while(aux!=NULL){
             if(aux->disponibilidad[2] == 1){
@@ -89,6 +92,7 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
         }
     }
 
+    //Jueves//
     if(dia[0] == 'J'){
         while(aux!=NULL){
             if(aux->disponibilidad[3] == 1){
@@ -100,6 +104,7 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
         }
     }
 
+    //Viernes//
     if(dia[0] == 'V'){
         while(aux!=NULL){
             if(aux->disponibilidad[4] == 1){
@@ -111,6 +116,7 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
         }
     }
 
+    //Sabado//
     if(dia[0] == 'S'){
         while(aux!=NULL){
             if(aux->disponibilidad[5] == 1){
@@ -122,6 +128,7 @@ void buscarBomberosDisponiblesPorDia(char *dia, List *listaBomberos){
         }
     }
 
+    //Domingo//
     if(dia[0] == 'D'){
         while(aux!=NULL){
             if(aux->disponibilidad[6] == 1){

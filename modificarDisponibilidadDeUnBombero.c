@@ -42,9 +42,10 @@ void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *li
                     encontrado = false;
                 }
             }
+
+            //Si se encontró se cambia la disponibilidad//
             if(encontrado){
                 char d[5000]; 
-
 
                 printf("Por favor ingrese disponiblidad por persona: S = si, N = No\n");
                 printf("\nLunes: ");
@@ -103,6 +104,7 @@ void modificarDisponibilidadDeUnBombero(char *rut, int *disponibilidad, List *li
                     disponibilidad[6] = 1;
                 }else disponibilidad[6] = 0;
 
+                //Se cambia disponiblidad a la persona y se cierra la función//
                 for( i = 0; i < 7; i++){
                     aux->disponibilidad[i] = disponibilidad[i];
                 }

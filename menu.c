@@ -4,6 +4,7 @@
 void menu(int *opcion){
     char entrada[5000];
     int numero;
+
     do{
     memset(entrada, '\0', 1000);
     printf("Estacion de bomberos\n");
@@ -22,8 +23,10 @@ void menu(int *opcion){
     getchar();
     numero = entrada[0] - 48; //Diferencia ascii para conseguir entradas precisas para numeros enteros//
     if( ( (numero < 0) || (numero > 9) ) || entrada[1] != '\0' ) printf("Opción no valida!\n\n");
-    (*opcion) = numero;
-    }while( (*opcion < 0) || (*opcion > 9) || entrada[1] != '\0');
+    (*opcion) = numero; // Se entrega a 'opcion' el valor de numero//
+
+    //Si cadena es más grande que un solo caracter o no está entre 0 y 9 se continua en el bucle //
+    }while( (*opcion < 0) || (*opcion > 9) || entrada[1] != '\0');  
 
     return;
 }

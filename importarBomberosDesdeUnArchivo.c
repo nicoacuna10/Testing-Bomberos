@@ -70,26 +70,31 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
     int i, j = 0;
 
     while(fgets (linea, 1000, fp) != NULL){
-        b =(Bombero*)malloc(sizeof(Bombero));
+        b = (Bombero*)malloc(sizeof(Bombero));
         b->rut = malloc(10*sizeof(char));
         b->nombre = malloc(100*sizeof(char));
 
         //Se lee desde el archivo cvs los datos de las personas y se van agregando a la 'list'//
         //Se usa 'b' para guardar todos los datos del archivo csv por persona y se guardan en lista//
         for( i = 0; i < 9; i++) {
+            //RUT//
             if(i==0){
               b->rut = get_csv_field(linea,i);
             }
+
+            //NOMBRE//
             if(i==1){
               b->nombre = get_csv_field(linea,i);
             }
 
+            //Desde 2 hasta 8 son las disponibilidad de todos los días//
             if(i==2){
               aux = get_csv_field(linea,i);
               if(aux[0] == 'S'){
                 b->disponibilidad[0] = 1;
               }else b->disponibilidad[0] = 0;
             }
+
             if(i==3){
               aux = get_csv_field(linea,i);
               if(aux[0] == 'S'){
@@ -97,6 +102,7 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
               }else b->disponibilidad[1] = 0;
 
             }
+
             if(i==4){
               aux = get_csv_field(linea,i);
               if(aux[0] == 'S'){
@@ -104,6 +110,7 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
               }else b->disponibilidad[2] = 0;
 
             }
+            
             if(i==5){
               aux = get_csv_field(linea,i);
               if(aux[0] == 'S'){
@@ -112,6 +119,7 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
 
 
             }
+
             if(i==6){
               aux = get_csv_field(linea,i);
               if(aux[0] == 'S'){
@@ -120,6 +128,7 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
 
 
             }
+
             if(i==7){
               aux = get_csv_field(linea,i);
               if(aux[0] == 'S'){
@@ -127,6 +136,7 @@ List *importarBomberosDesdeUnArchivo(char *nombreArchivo, unsigned long long *ta
               }else b->disponibilidad[5] = 0;
 
             }
+
             if(i==8){
               aux = get_csv_field(linea,i);
               if(aux[0] == 'S'){

@@ -40,7 +40,7 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
     cleanList(listaOrdenada);
 
 
-
+    //Se recorre toda la lista y se inicializan las variables correspondientes con ceros//
     Bombero *aux = firstList(listaBomberos);
     while(aux != NULL){
         aux->diasConTrabajo = 0;
@@ -68,16 +68,12 @@ List *crearHorarioSemanal(List *listaBomberos, List *listaOrdenada, Semana* plan
         aux = nextList(listaBomberos); 
     }
     
-    j = 0; //MIRAR SI AL FINAL DE TODO ESTA INSTRUCION NO ES NECESARIA//
-
-
 
     //Se realiza quickSort a vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar//
     qsort(vectorConCantidadTotalDeDiasQuePersonasPuedenTrabajar, totalBomberos, sizeof(int), comparar);
 
 
     //En esta sección se guarda en 'listaOrdeanda' las personas desde las que pueden trabajar menos hasta las que pueden más//
-    j = 0;
     i = 0;
     aux = firstList(listaBomberos);
     while(aux != NULL){

@@ -30,7 +30,7 @@ void mostrarTodosLosBomberosDeLaEstacion(List *listaBomberos);
 
 int main(void){
     int opcion = 0;
-    unsigned long long talla;
+    unsigned long long talla = 0;
     List *listaBomberos = createList();
     List *listaOrdenada = createList();
     Semana planificacionSemanal[35];
@@ -56,7 +56,6 @@ int main(void){
     }while(opcion != 0);
 
 
-    printf("TOTAL BOMBEROS: %llu\n\n", talla);
     printf("¡Adios! ¡Que tenga buen día !\n\n");
     free(listaBomberos);
     return 0;

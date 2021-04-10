@@ -28,12 +28,14 @@ void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla)
         i=0;
         encontrado = true;
         aux->rut = (char*)aux->rut;
+
         for( i = 0; aux->rut[i]; i++){
             if(aux->rut[i] != rut[i]){
                 encontrado = false;
                 break;
             }
         }
+
         if(encontrado){
             aux = popCurrent(listaBomberos);
             *talla = *talla-1;
@@ -42,8 +44,10 @@ void eliminarBomberos(char *rut, List *listaBomberos, unsigned long long *talla)
             printf("-----------------------\n");
             return;
         }
+
         aux = nextList(listaBomberos);
     }
+
     if(!encontrado){
         printf("NO EXISTE REGISTRO\n");
     }
